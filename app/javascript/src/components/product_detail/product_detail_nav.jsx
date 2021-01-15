@@ -18,8 +18,8 @@ const ProductDetailNav = ({
 
   let linkUrl = product.link_url
   let upvoteButtonClass = currentUserUpvoted
-    ? "orange-button"
-    : "orange-border-button"
+    ? "brand-button"
+    : "brand-border-button"
   let upvoteButtonText = currentUserUpvoted ? "UPVOTED" : "UPVOTE"
   return (
     <div className="product-detail-nav">

@@ -89,7 +89,7 @@ const NewProductForm = ({ history, createProduct }) => {
         <div className="np-form-buttons">
           <input
             type="submit"
-            className="button orange-button medium-size"
+            className="button brand-button medium-size"
             value="Submit"
           ></input>
         </div>

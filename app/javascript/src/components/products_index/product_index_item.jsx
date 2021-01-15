@@ -29,7 +29,7 @@ const ProductIndexItem = ({
 
   const commentCount = product.comments_count.toString()
   const upvoteButtonClass = currentUserUpvoted
-    ? "orange-button small-size"
+    ? "brand-button small-size"
     : "white-button small-size"
 
   return (

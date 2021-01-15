@@ -48,7 +48,7 @@ const CommentItem = ({
   let commentActions = undefined
   let deleteButton = undefined
 
-  let upvotedClass = currentUserUpvoted ? "orange-link-button" : ""
+  let upvotedClass = currentUserUpvoted ? "brand-link-button" : ""
 
   if (currentUser) {
     commentForm = (

@@ -71,35 +71,35 @@ input[type=submit] {
 	color: $text-gray;
 }
 
-.orange-border-button {
+.brand-border-button {
 	background-color: $white;
-	border-color: $orange;
-	border: 1px solid $orange;
-	color: $orange;
+	border-color: $brand;
+	border: 1px solid $brand;
+	color: $brand;
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
 }
 
-.orange-button {
-	background-color: $orange;
-	border-color: $orange;
-	border: 1px solid $orange;
+.brand-button {
+	background-color: $brand;
+	border-color: $brand;
+	border: 1px solid $brand;
 	color: white;
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
 }
 
-.orange-button:hover {
-	background-color: $light-orange;
-	border-color: $orange;
+.brand-button:hover {
+	background-color: $light-brand;
+	border-color: $brand;
 }
 
 .hero-button {
-  background-color: $orange;
-	border-color: $orange;
-	border: 1px solid $orange;
+  background-color: $brand;
+	border-color: $brand;
+	border: 1px solid $brand;
 	color: white;
 	display: flex;
 	justify-content: space-around;
@@ -111,8 +111,8 @@ input[type=submit] {
 }
 
 .hero-button:hover {
-	background-color: $light-orange;
-	border-color: $orange;
+	background-color: $light-brand;
+	border-color: $brand;
 }
  
 .link-button {
@@ -120,8 +120,8 @@ input[type=submit] {
 	margin-right: 5px;
 }
 
-.orange-link-button {
-	color: $orange;
+.brand-link-button {
+	color: $brand;
 }
 
 .upvotes {
