@@ -7,7 +7,6 @@
 // To reference this file, add <%= javascript_pack_tag 'application' %> to the appropriate
 // layout file, like app/views/layouts/application.html.erb
 
-
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
 // or the `imagePath` JavaScript helper below.
@@ -15,22 +14,24 @@
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
-import React from "react";
-import ReactDOM from "react-dom";
+import React from "react"
+import ReactDOM from "react-dom"
 
-import configureStore from "../src/store/store";
-import Root from "../src/components/root";
+import configureStore from "../src/store/store"
+import Root from "../src/components/root"
+
+const images = require.context("../images", true)
 
 document.addEventListener("DOMContentLoaded", () => {
-  let root = document.getElementById("root");
-  let store = undefined;
+  let root = document.getElementById("root")
+  let store = undefined
 
   if (window.currentUser) {
-    const preloadedState = { session: { currentUser: window.currentUser } };
-    store = configureStore(preloadedState);
+    const preloadedState = { session: { currentUser: window.currentUser } }
+    store = configureStore(preloadedState)
   } else {
-    store = configureStore();
+    store = configureStore()
   }
 
-  ReactDOM.render(<Root store={store} />, root);
-});
+  ReactDOM.render(<Root store={store} />, root)
+})
