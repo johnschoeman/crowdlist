@@ -58,8 +58,6 @@ input[type=submit] {
 .white-button {
 	background-color: $white;
 	border: 1px solid $gray;
-;
-	// color: $black;
 }
 
 .white-button:hover {
@@ -93,7 +91,7 @@ input[type=submit] {
 
 .brand-button:hover {
 	background-color: $light-brand;
-	border-color: $brand;
+	border-color: $light-brand;
 }
 
 .hero-button {
@@ -102,7 +100,8 @@ input[type=submit] {
 	border: 1px solid $brand;
 	color: white;
 	display: flex;
-	justify-content: space-around;
+	justify-content: center;
+  align-items: center;
 	font-weight: 700;
 	height: 42px;
 	width: 54px;
@@ -112,7 +111,7 @@ input[type=submit] {
 
 .hero-button:hover {
 	background-color: $light-brand;
-	border-color: $brand;
+	border-color: $light-brand;
 }
  
 .link-button {

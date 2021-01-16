@@ -1,71 +1,63 @@
-import React from 'react';
-import ReactModal from 'react-modal';
-import SessionFormContainer from '../session_form/session_form_container';
+import React, { useState } from "react"
+import ReactModal from "react-modal"
+import SessionFormContainer from "../session_form/session_form_container"
 
-class HeroBanner extends React.Component {
-  constructor(props) {
-    super(props);
+const HeroBanner = () => {
+  const [modalIsOpen, setModalIsOpen] = useState(false)
+  const [modalFormType, setModalFormType] = useState("login")
 
-    this.state = {
-      modalIsOpen: false,
-      modalFormType: "login",
-    };
-    
-    this.openModal = this.openModal.bind(this);
-    this.afterModalOpen = this.afterModalOpen.bind(this);
-    this.closeModal = this.closeModal.bind(this);
-  }
-
-  openModal(formType) {
+  const openModal = (formType) => {
     return () => {
-      this.setState({
-        modalFormType: formType,
-        modalIsOpen: true
-      });
-    };
+      setModalFormType(formType)
+      setModalIsOpen(true)
+    }
   }
 
-  afterModalOpen() {
-    ReactModal.defaultStyles.overlay.backgroundColor = 'rgba(128,128,128,0.75)';
-    ReactModal.defaultStyles.content.display = 'flex';
+  const afterModalOpen = () => {
+    ReactModal.defaultStyles.overlay.backgroundColor = "rgba(128,128,128,0.75)"
+    ReactModal.defaultStyles.content.display = "flex"
   }
 
-  closeModal() {
-    this.setState({modalIsOpen: false});
+  const closeModal = () => {
+    setModalIsOpen(false)
   }
 
-  handleClick(formType) {
+  const handleClick = (formType) => {
     return () => {
-      this.openModal(formType)();
-    };
+      openModal(formType)()
+    }
   }
 
-  render() {
-    return (
-      <div className="hero-banner">
-
-        <ReactModal
-          id="modal"
-          isOpen={this.state.modalIsOpen}
-          onAfterOpen={this.afterModalOpen}
-          onRequestClose={this.closeModal}
-          contentLabel="Modal_Content"
-          className="modal">
-
-
-          <SessionFormContainer formType={this.state.modalFormType} closeModal={this.closeModal} />
-        </ReactModal>
-        <div className="hero-banner-container">
-          <div className="hero-banner-content">
-            <span className="hero-banner-title">Discover your next favorite thing</span>
-            <p className="hero-banner-text">Product Hunt surfaces the best new products, every day. It's a place for product-loving enthusiasts to share and geek out about the latest mobile apps, websites, hardware projects, and tech creations.</p>
-            <button className="hero-button" onClick={this.handleClick('signup')}>SIGN UP</button>
-          </div>
-          <div className="hero-banner-img"></div>
+  return (
+    <div className="hero-banner">
+      <ReactModal
+        id="modal"
+        isOpen={modalIsOpen}
+        onAfterOpen={afterModalOpen}
+        onRequestClose={closeModal}
+        contentLabel="Modal_Content"
+        className="modal"
+      >
+        <SessionFormContainer
+          formType={modalFormType}
+          closeModal={closeModal}
+        />
+      </ReactModal>
+      <div className="hero-banner-container">
+        <div className="hero-banner-content">
+          <span className="hero-banner-title">Fund your next campaign</span>
+          <p className="hero-banner-text">
+            Crowd List surfaces the best new campaigns, every day. It's a place
+            for investors looking to democratize venture capital.
+          </p>
+          <button className="hero-button" onClick={handleClick("signup")}>
+            SIGN UP
+          </button>
         </div>
       </div>
-    );
-  }
+    </div>
+  )
 }
 
-export default HeroBanner;
+export default HeroBanner
+
