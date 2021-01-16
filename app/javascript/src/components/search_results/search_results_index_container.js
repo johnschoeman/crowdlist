@@ -1,26 +1,28 @@
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router';
-import SearchResultsIndex from './search_results_index';
+import { connect } from "react-redux"
+import { withRouter } from "react-router"
+import SearchResultsIndex from "./search_results_index"
 
 const mapStateToProps = (state, ownProps) => {
-  let products = state.entities.searchResults.products.byId;
-  let productIds = state.entities.searchResults.products.allIds;
-  let users = state.entities.searchResults.users.byId;
-  let userIds = state.entities.searchResults.users.allIds;
-  
+  let products = state.entities.searchResults.products.by_id
+  let productIds = state.entities.searchResults.products.all_ids
+  let users = state.entities.searchResults.users.by_id
+  let userIds = state.entities.searchResults.users.all_ids
+
   return {
     products,
     productIds,
     users,
-    userIds
-  };
-};
+    userIds,
+  }
+}
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-
   return {
-    test: "test"
-  };
-};
+    test: "test",
+  }
+}
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SearchResultsIndex));
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(SearchResultsIndex)
+)
+
