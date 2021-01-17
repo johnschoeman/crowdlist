@@ -1,107 +1,91 @@
-import React from "react"
-import { Link, withRouter } from "react-router-dom"
+import React, { useState } from "react"
+import { withRouter } from "react-router-dom"
 
-class SessionForm extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = { username: "", password: "" }
-    this.handleSubmit = this.handleSubmit.bind(this)
-    this.loginDemoUser = this.loginDemoUser.bind(this)
-  }
+const SessionForm = ({
+  formType,
+  errors,
+  processForm,
+  closeModal,
+  history,
+  fetchAllProducts,
+}) => {
+  const [username, setUsername] = useState("")
+  const [password, setPassword] = useState("")
 
-  handleSubmit(e) {
+  const handleSubmit = (e) => {
     e.preventDefault()
-    const user = Object.assign({}, this.state)
-    this.props
-      .processForm(user)
-      .then(this.props.closeModal)
+    const user = { username, password }
+    processForm(user)
+      .then(closeModal)
       .then(() => {
-        this.props.history.push("/")
+        history.push("/")
       })
       .then(() => {
-        this.props.fetchAllProducts()
+        fetchAllProducts()
       })
   }
 
-  update(key) {
-    return (e) => {
-      this.setState({ [key]: e.target.value })
-    }
+  const updateUsername = (e) => {
+    setUsername(e.target.value)
   }
 
-  loginDemoUser() {
-    this.setState({ username: "Product Hunt", password: "password" })
-    const user = Object.assign({}, this.state)
-    this.props
-      .processForm({ username: "Product Hunt", password: "password" })
-      .then(this.props.closeModal)
+  const updatePassword = (e) => {
+    setPassword(e.target.value)
   }
 
-  render() {
-    let btnText = undefined
-    let demoUserBtn = null
-    if (this.props.formType === "login") {
-      btnText = "LOG IN"
-      demoUserBtn = (
-        <button
-          className="brand-button medium-size"
-          onClick={this.loginDemoUser}
-        >
-          Demo Log In
-        </button>
-      )
-    } else {
-      btnText = "SIGN UP"
-    }
+  let btnText = undefined
 
-    return (
-      <div className="session-form">
-        <div className="session-form-img"></div>
-        <h2>Login to Join The Community</h2>
-        <p className="intro">
-          Product Hunt is a community to share and geek out about the latest
-          products, books and games. Join us :)
-        </p>
+  if (formType === "login") {
+    btnText = "LOG IN"
+  } else {
+    btnText = "SIGN UP"
+  }
 
-        <ul className="session-errors">
-          {this.props.errors.map((error, idx) => (
-            <li key={idx}>{error}</li>
-          ))}
-        </ul>
+  return (
+    <div className="session-form">
+      <h2>Login to Join The Community</h2>
+      <p className="intro">
+        Crowd List is a community to share and find the latest crowdsourced
+        investements.
+      </p>
 
-        <form onSubmit={this.handleSubmit}>
-          <div className="form-input-container">
-            <div className="form-input">
-              <label>Username</label>
-              <input
-                type="text"
-                onChange={this.update("username")}
-                value={this.state.username}
-              ></input>
-            </div>
+      <ul className="session-errors">
+        {errors.map((error, idx) => (
+          <li key={idx}>{error}</li>
+        ))}
+      </ul>
 
-            <div className="form-input">
-              <label>Password</label>
-              <input
-                type="password"
-                onChange={this.update("password")}
-                value={this.state.password}
-              ></input>
-            </div>
-
-            <div className="session-btn-nav">
-              <input
-                type="submit"
-                className="brand-button medium-size"
-                value={btnText}
-              ></input>
-              {demoUserBtn}
-            </div>
+      <form onSubmit={handleSubmit}>
+        <div className="form-input-container">
+          <div className="form-input">
+            <label>Username</label>
+            <input
+              type="text"
+              onChange={updateUsername}
+              value={username}
+            ></input>
           </div>
-        </form>
-      </div>
-    )
-  }
+
+          <div className="form-input">
+            <label>Password</label>
+            <input
+              type="password"
+              onChange={updatePassword}
+              value={password}
+            ></input>
+          </div>
+
+          <div className="session-btn-nav">
+            <input
+              type="submit"
+              className="brand-button medium-size"
+              value={btnText}
+            ></input>
+          </div>
+        </div>
+      </form>
+    </div>
+  )
 }
 
 export default withRouter(SessionForm)
