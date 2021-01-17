@@ -12,8 +12,6 @@
 
 .comment {
   margin: 0 0 20px;
-  //test
-  // border: 1px solid red;
 }
 
 .child-comment {
@@ -21,8 +19,6 @@
   border-left: 4px solid #e8e8e8;
   margin-bottom: 0;
   padding: 0 0 20px 20px;
-  //test
-  // border: 1px solid red;
 }
 
 //User Spotlight
@@ -69,6 +65,12 @@
   display: flex;
   justify-content: flex-start;
   margin: 0 0 0 42px;
+}
+
+.comment-upvotes {
+  display: flex;
+  flex-direction: "row";
+  border: 1px solid red;
 }
 
 // New Comment Form

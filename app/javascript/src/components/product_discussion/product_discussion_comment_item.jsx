@@ -98,13 +98,7 @@ const CommentItem = ({
   } else {
     commentActions = (
       <div className="comment-actions">
-        <div className="comment-upvote-button">
-          <button onClick={openLogin} className="link-button upvotes">
-            <i className="fa fa-thumbs-up" aria-hidden="true" />
-            <a>Upvote</a>
-            <p>{`(${countUpvotes})`}</p>
-          </button>
-        </div>
+        <p>{`Upvotes: (${countUpvotes})`}</p>
       </div>
     )
   }
@@ -155,4 +149,3 @@ const CommentItem = ({
 }
 
 export default withRouter(CommentItem)
-
